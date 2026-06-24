@@ -1,0 +1,373 @@
+/* ------------------------------------------------------------------ */
+/*  Kacper Balbus — personal page                                      */
+/*  Dark, minimal, typography-led. Teal accent.                        */
+/* ------------------------------------------------------------------ */
+
+:root {
+  --bg:        #0d0f12;
+  --surface:   #15181d;
+  --border:    #232830;
+  --text:      #e6e8eb;
+  --muted:     #9aa3ad;
+  --faint:     #6b7480;
+  --accent:    #2dd4bf;
+  --accent-hi: #5eead4;
+
+  --maxw: 720px;
+  --radius: 8px;
+
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Subtle radial glow behind the hero */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    900px 500px at 50% -10%,
+    rgba(45, 212, 191, 0.08),
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+a:hover { color: var(--accent-hi); }
+a:focus-visible,
+.skip-link:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--surface);
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: var(--radius);
+}
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+  z-index: 10;
+}
+
+/* ----------------------------- Hero ------------------------------- */
+
+.hero {
+  padding: 96px 0 56px;
+  border-bottom: 1px solid var(--border);
+}
+
+.name {
+  margin: 0;
+  font-size: clamp(2.2rem, 6vw, 3.1rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.role {
+  margin: 10px 0 0;
+  font-size: clamp(1.05rem, 3vw, 1.3rem);
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.location {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+  font-size: 0.95rem;
+}
+.hero-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+.hero-links a:hover {
+  color: var(--accent-hi);
+  border-color: rgba(45, 212, 191, 0.45);
+  transform: translateY(-1px);
+}
+.entry-links .dot {
+  color: var(--faint);
+  margin: 0 10px;
+}
+
+/* ---------------------------- Icons ------------------------------- */
+
+.icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.icon-sm {
+  width: 15px;
+  height: 15px;
+  vertical-align: -2px;
+  margin-right: 5px;
+}
+.location .icon {
+  color: var(--accent);
+}
+
+/* --------------------------- Sections ----------------------------- */
+
+.section {
+  padding: 48px 0 0;
+}
+
+.section-title {
+  margin: 0 0 22px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+.lead {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+/* ---------------------------- Entries ----------------------------- */
+
+.entry {
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+}
+.entry:first-of-type { border-top: none; padding-top: 0; }
+
+.entry-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+}
+
+.entry-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.entry-org {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.entry-date {
+  font-size: 0.85rem;
+  color: var(--faint);
+  font-family: var(--mono);
+  white-space: nowrap;
+}
+
+.entry-company {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.roles {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  border-left: 2px solid var(--border);
+}
+
+.role-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2px 16px;
+  padding: 4px 0 4px 14px;
+  position: relative;
+}
+.role-row::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 13px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.role-row:not(:first-child)::before {
+  background: var(--faint);
+}
+
+.role-name {
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* Education — plain rows, no timeline */
+.edu-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+.edu-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2px 16px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+}
+.edu-row:first-child {
+  border-top: none;
+  padding-top: 4px;
+}
+
+.entry-body {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.entry-links {
+  margin: 12px 0 0;
+  font-size: 0.9rem;
+}
+
+/* ----------------------------- Tags ------------------------------- */
+
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 0;
+}
+
+.tags li {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--accent-hi);
+  background: rgba(45, 212, 191, 0.08);
+  border: 1px solid rgba(45, 212, 191, 0.2);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.muted-tags li {
+  color: var(--muted);
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+/* ---------------------------- Skills ------------------------------ */
+
+.skills-group { margin-bottom: 22px; }
+.skills-group:last-child { margin-bottom: 0; }
+
+.skills-label {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.skills-text {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+/* ---------------------------- Footer ------------------------------ */
+
+.footer {
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 0.95rem;
+}
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.copyright {
+  margin: 28px 0 0;
+  font-size: 0.85rem;
+  color: var(--faint);
+}
+
+/* -------------------------- Responsive ---------------------------- */
+
+@media (max-width: 540px) {
+  .hero { padding: 64px 0 40px; }
+  .section { padding-top: 40px; }
+  .entry-date { font-size: 0.8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  a { transition: none; }
+}
